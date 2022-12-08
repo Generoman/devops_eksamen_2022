@@ -5,5 +5,9 @@ terraform {
       version = "4.40.0"
     }
   }
-
+  backend "s3" {
+    bucket = "analytics-${var.candidate_id}"
+    key = "./terraform.state"
+    region = "eu-west-1"
+  }
 }
