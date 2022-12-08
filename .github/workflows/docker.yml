@@ -3,8 +3,9 @@ name: Docker build
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  # temporarily commented out to test branch protection
+  #pull_request:
+  #  branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
