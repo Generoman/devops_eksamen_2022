@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "analytics-${var.candidate_id}"
+    bucket = "analytics-1025"
     key = "./terraform.state"
     region = "eu-west-1"
   }
