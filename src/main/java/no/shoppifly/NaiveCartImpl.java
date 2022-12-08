@@ -7,6 +7,11 @@ import java.util.*;
 @Component
 class NaiveCartImpl implements CartService {
 
+    @Override
+    public Map<String, Cart> getShoppingCarts() {
+        return shoppingCarts;
+    }
+
     private final Map<String, Cart> shoppingCarts = new HashMap<>();
 
     @Override
@@ -30,7 +35,7 @@ class NaiveCartImpl implements CartService {
     }
 
     @Override
-    public List<String> getAllsCarts() {
+    public List<String> getAllCarts() {
         return new ArrayList<>(shoppingCarts.keySet());
     }
 
