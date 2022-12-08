@@ -18,7 +18,7 @@ public class CartServiceTest {
 
         // Jim; This must be wrong, right? Shouldn't the cart be removed after checkout
         // Change 'expected' to anything but 0 to force test to fail
-        assertEquals(10, service.getAllsCarts().size());
+        assertEquals(0, service.getAllsCarts().size());
     }
 
 }
