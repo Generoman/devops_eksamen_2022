@@ -1,14 +1,17 @@
 # Jim; I'm giving up on this docker thing. It just fails ,and I've spent about six weeks on this...
-name: Docker build
+name: Publish Docker Image
 on:
+  # change to only trigger on push: branches: [ main ]
   push:
   pull_request:
     branches: [ main ]
 jobs:
-  build:
+  push_to_registry:
+    name: Push Docker Image to Dockerhub
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Repo
+        uses: actions/checkout@v2
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -16,7 +19,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and Push
         uses: docker/build-push-action@v3
         with:
           context: .
