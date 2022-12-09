@@ -1,18 +1,43 @@
 # Besvarelse for kandidatnr. 1025
 
+### Angående Cloud9
+Jeg har ikke brukt Cloud9 under besvarelsen, til fordel for IntelliJ. Merk derfor at Cloud9 vil være tomt hos meg på
+AWS.
+
 # Del 1
 
-### Utfordringer
+### Dagens prosess
+Den prosessen Shopifly nå følger har fire deployments i året, dedikerte testere, og manuelle godkjenninger av leveranse.
+Utvikling og vedlikehold er også delte avdelinger.
 
+Utfordringene med dette er først og fremst veldig trege releases, som sannsynligvis kommer av store leveranser.
+Oppstykking av teams fører til lite krysspollenering av kunnskap - et eget team med testere burde f.eks. ikke være
+nødvendig. Det virker som automatiseringen av prosessen også er minimal.
+
+Innføring av DevOps vil blant annet sørge for hyppigere, men mindre releases. Feilende releases kan minimeres ved  hjelp
+av Blue Green Deployment (release nyeste versjon kun til en del av brukergruppen). Godkjenning av leveranser kan i stor
+grad automatiseres ved hjelp av CI/CD og Trunk Based Development, hvor en kan sette opp diverse checks på pull requests.
 
 ### Feil under release
+Mindre hyppige releases fører til at det går lengre tid frem til man vet om ting virker som de skal eller ikke. Ved feil
+i produksjon, skal feilen rettes opp ASAP. Mean Time To Recovery (MTTR) er en vanlig metrikk å følge med på i DevOps,
+som ser på hvor kort tid det tar mellom en feil oppstår, og når den blir fikset. Om utviklere har ansvar for dette,
+fremfor en ops-avdeling, vil også denne tiden være kortere, da utviklerne sannsynligvis har bedre forståelse for HVA som
+har gått galt.
 
+Hva angår mer kontroll og QA, så kan dette automatiseres ved hjelp av automatiserte tester gjennom et CI/CD-verktøy som
+GitHub Actions eller lignende. Jeg er også av den oppfatning at utviklere burde skrive sine egne tester gjennom en
+blanding av TDD og BDD. Kodekvalitet/linting og lignende kan også automatiseres. Godkjenning av pull requests er kanskje
+eneste manuelle steg som burde beholdes, men det er en personlig mening.
 
 ### Dev og Ops
+Jeg har nevnt dette litt allerede, men det handler først og fremst om eierskap og ansvar. Utviklere som har ansvar for å
+drifte eget produkt er mer motivert til å skrive god kode, da de har "skin in the game". Jeg vil også påstå at MTTR vil
+gå ned dersom den som fikser en eventuell feil kjenner koden godt.
 
-
-### Hvordan fjerne risiko
-
+### Risiko ved hyppige releases
+Hyppige forandringer kan bety hyppige feil. Jeg har allerede nevnt automatiserte tester gjennom CI/CD og Blue Green
+Deployment. I tillegg kan telemetri hjelpe et team å oppdage feil så snart de skjer.
 
 ## Del 2
 
@@ -54,4 +79,5 @@ Merk at for at `cloudwatch-dashboard.yml`-workflowen skal kjøre riktig, må det
 * `CANDIDATE_EMAIL` må være sensors epostadresse
 
 ### Oppgave 1
-Jeg er helt ærlig ikke sikker på dette, men fikk fikset feilen da jeg endret linje 3 i `databucket.tf` til å starte med `data` istedenfor `resource`. Dette er visstnok en kjent utfordring, ifølge mine google-søk.
+Jeg er helt ærlig ikke sikker på dette, men fikk fikset feilen da jeg endret linje 3 i `databucket.tf` til å starte med
+`data` istedenfor `resource`. Dette er visstnok en kjent utfordring, ifølge mine google-søk.
