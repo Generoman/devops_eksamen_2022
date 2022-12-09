@@ -52,6 +52,7 @@ Da studenter har tilgang på Github Pro gratis, har jeg kunnet sette opp branch 
 * "Require status checks to pass before merging" skal være huket av
   * Skriv inn "build" i søkefeltet og velg det fra dropdown
   * Ved fullføring av Del 5, har jeg også lagt til "Terraform" fra søk/dropdown, da dette virket fornuftig
+* "Do not allow bypassing the above settings" må være huket av for at reglene skal gjelde admin også
 * Trykk "Create" nederst på siden
 
 ## Del 3
